@@ -1,0 +1,37 @@
+{
+  "name": "app",
+  "productName": "Picnic",
+  "version": "0.0.1",
+  "description": "Dashboard",
+  "license": "MIT",
+  "repository": "https://github.com/neurotech/picnic",
+  "author": {
+    "name": "Tim Douglas",
+    "email": "neurotech@gmail.com",
+    "url": "https://github.com/neurotech"
+  },
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "electron-packager . Picnic --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "dependencies": {
+    "electron-debug": "^1.0.0"
+  },
+  "devDependencies": {
+    "devtron": "^1.1.0",
+    "electron-packager": "^7.0.0",
+    "electron-prebuilt": "^1.0.1",
+    "xo": "^0.15.0"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}
