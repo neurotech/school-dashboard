@@ -1,27 +1,151 @@
-html,
-body {
+html, body {
 	padding: 0;
 	margin: 0;
 }
 
 body {
+	background: #ECF0FF;
 	font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+	color: #2A2A2A;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+#app {
+	height: 100%;
 }
 
 header {
-	position: absolute;
-	width: 500px;
-	height: 250px;
-	top: 50%;
-	left: 50%;
-	margin-top: -125px;
-	margin-left: -250px;
-	text-align: center;
+	overflow: hidden;
+	height: auto;
+	color: white;
+  background: #4E59A1;
 }
 
-header h1 {
-	font-size: 60px;
-	font-weight: 100;
-	margin: 0;
-	padding: 0;
+#time, #now {
+	font-size: 1.5em;
+}
+
+#time {
+	text-align: left;
+}
+
+#now {
+	text-align: right;
+}
+
+#content {
+	min-height: 500px;
+  opacity: 1;
+  transition: all 300ms ease-out;
+}
+
+#content.transition {
+  opacity: 0;
+}
+
+#splash {
+	width: 300px;
+  padding: 30px;
+  margin: 100px auto 0 auto;
+  text-align: center;
+	line-height: 2.5em;
+	color: #444;
+  border: 1px solid #AAA;
+  background: #CCC;
+}
+
+.title {
+	color: rgba(73, 92, 161, 1);
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	padding: 0 30px 0 0;
+	text-align: right;
+	color: #7384AF;
+	font-style: italic;
+}
+
+#staff-absent td {
+	padding: 5px;
+}
+
+#staff-absent-now-header, #staff-absent-soon-header, #staff-absent-all-day-header {
+	color: white;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+	padding: 10px;
+}
+
+.block {
+	background: white;
+}
+
+.green-stripe {
+  background: #39C973;
+  border: 1px solid #30AD63;
+}
+
+.blue-stripe {
+	background: #3970C9;
+  border: 1px solid #24529E;
+}
+
+.purple-stripe {
+	background: #4863BA;
+  border: 1px solid #2C4288;
+}
+
+.red-stripe {
+  background: #E44D42;
+  border: 1px solid #AE2D24;
+}
+
+.orange-stripe {
+	background: #E49342;
+  border: 1px solid #A96815;
+}
+
+/* Borders */
+
+.green-border {
+  border-top: none;
+  border-right: 1px solid #30AD63;
+  border-bottom: 1px solid #30AD63;
+  border-left: 1px solid #30AD63;
+}
+
+.blue-border {
+	border-top: none;
+  border-right: 1px solid #24529E;
+  border-bottom: 1px solid #24529E;
+  border-left: 1px solid #24529E;
+}
+
+.purple-border {
+	border-top: none;
+  border-right: 1px solid #2C4288;
+  border-bottom: 1px solid #2C4288;
+  border-left: 1px solid #2C4288;
+}
+
+.red-border {
+  border: none;
+  border-right: 1px solid #AE2D24;
+  border-bottom: 1px solid #AE2D24;
+  border-left: 1px solid #AE2D24;
+}
+
+.orange-border {
+	border-top: none;
+  border-right: 1px solid #A96815;
+  border-bottom: 1px solid #A96815;
+  border-left: 1px solid #A96815;
 }

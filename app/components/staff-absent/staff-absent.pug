@@ -1,0 +1,36 @@
+h2.bit-1.title {{title}}
+
+#staff-absent.bit-1
+
+  #staff-absent-now(v-if="staffAbsent.now.length > 0").bit-50
+    #staff-absent-now-header Now
+    table
+      tr(v-for="item in staffAbsent.now").bit-1
+        td
+          strong {{item.firstname}} {{item.surname}}
+        td {{item.awayReason}}
+
+  #staff-absent-soon(v-if="staffAbsent.soon.length > 0").bit-50
+    #staff-absent-soon-header Soon
+    table
+      tr(v-for="item in staffAbsent.soon")
+        td
+          strong {{item.firstname}} {{item.surname}}
+        td {{item.awayReason}}
+
+  #staff-absent-all-day(v-if="staffAbsent.allDay.length > 0").bit-50
+    #staff-absent-all-day-header.red-stripe All Day
+    table.red-border.block
+      tr(v-for="item in staffAbsent.allDay")
+        td
+          strong {{item.firstname}} {{item.surname}}
+        td {{item.awayReason}}
+
+  #staff-absent-all-day(v-if="staffAbsent.allDay.length > 0").bit-50
+    #staff-absent-all-day-header.green-stripe All Day (with time from/to)
+    table.green-border.block
+      tr(v-for="item in staffAbsent.allDay")
+        td
+          strong {{item.firstname}} {{item.surname}}
+        td {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
+        td {{item.awayReason}}

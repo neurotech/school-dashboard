@@ -19,12 +19,18 @@
     "electron"
   ],
   "dependencies": {
-    "electron-debug": "^1.0.0"
+    "electron-debug": "^1.0.0",
+    "got": "6.3.0",
+    "moment": "2.13.0",
+    "page": "1.7.1",
+    "pug": "2.0.0-beta2",
+    "vue": "1.0.24"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
     "electron-packager": "^7.0.0",
     "electron-prebuilt": "^1.0.1",
+    "semistandard": "8.0.0",
     "xo": "^0.15.0"
   },
   "xo": {

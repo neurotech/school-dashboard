@@ -2,16 +2,24 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Electron boilerplate</title>
+		<title>Picnic</title>
+		<link rel="stylesheet" href="normalize.css">
+		<link rel="stylesheet" href="lemonade.css">
 		<link rel="stylesheet" href="index.css">
 	</head>
 	<body>
-		<div class="container">
-			<header>
-				<h1>Electron boilerplate</h1>
-			</header>
-			<section class="main"></section>
-			<footer></footer>
+		<div id="app" class="frame">
+			<header class="bit-1">
+				<div id="time" class="bit-25">{{now.time}}</div>
+				<div id="now" class="bit-75">{{now.date}} ({{timetable.period}} - Week {{timetable.week}})</div>
+		  </header>
+
+			<div id="content" class="bit-1">
+				<component :is="currentView"></component>
+			</div>
+
+			<footer>Data last updated: {{lastUpdated(freshness)}}</footer>
 		</div>
+	  <script src="index.js"></script>
 	</body>
 </html>
