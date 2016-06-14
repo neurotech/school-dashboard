@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'Brandon Black';
+  src: url("../fonts/Brandon_Black.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Black Italics';
+  src: url("../fonts/Brandon_Black_Italics.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Bold';
+  src: url("../fonts/Brandon_Bold.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Bold Italics';
+  src: url("../fonts/Brandon_Bold_Italics.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Light';
+  src: url("../fonts/Brandon_Light.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Light Italics';
+  src: url("../fonts/Brandon_Light_Italics.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Medium';
+  src: url("../fonts/Brandon_Medium.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Medium Italics';
+  src: url("../fonts/Brandon_Medium_Italics.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Regular';
+  src: url("../fonts/Brandon_Regular.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Regular Italics';
+  src: url("../fonts/Brandon_Regular_Italics.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Thin';
+  src: url("../fonts/Brandon_Thin.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Brandon Thin Italics';
+  src: url("../fonts/Brandon_Thin_Italics.otf") format("opentype"); }
+
+html, body {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: #312e46;
+  font-family: 'Brandon Regular';
+  color: #EFEFEF; }
+
+[v-cloak] {
+  display: none; }
+
+#app {
+  height: 100%; }
+
+header {
+  overflow: hidden;
+  height: auto;
+  color: #EFEFEF; }
+
+#time, #now {
+  font-size: 1.5em; }
+
+#time {
+  text-align: left; }
+
+#now {
+  text-align: right; }
+
+#content {
+  min-height: 500px;
+  opacity: 1;
+  transition: all 300ms ease-out; }
+
+#content.transition {
+  opacity: 0; }
+
+#splash {
+  width: 300px;
+  padding: 30px;
+  margin: 100px auto 0 auto;
+  text-align: center;
+  line-height: 2.5em;
+  color: #EFEFEF;
+  background: #403E58; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0 30px 0 0;
+  font-family: 'Brandon Light Italics';
+  text-align: right;
+  color: rgba(158, 160, 183, 0.25); }
+
+.block-header {
+  padding: 10px;
+  font-family: 'Brandon Bold';
+  font-size: 1.5em;
+  text-align: left;
+  margin: 0; }
+
+.block-content {
+  overflow: hidden;
+  background-color: #403E58;
+  margin: 0 0 10px 0;
+  font-size: 1.35em; }
+
+.block-name {
+  font-family: 'Brandon Medium';
+  color: #EFEFEF;
+  padding: 5px; }
+
+.block-time {
+  font-family: 'Brandon Light';
+  color: #9EA0B7;
+  padding: 5px; }
+
+.block-reason {
+  font-family: 'Brandon Regular';
+  font-size: 1em;
+  color: #9EA0B7;
+  padding: 5px; }
+
+#staff-absent {
+  padding: 0; }
+
+.yellow-block {
+  background: #FFD93B;
+  color: #483902; }
+
+.red-block {
+  background: #FF4E31;
+  color: #5D1505; }
+
+.blue-block {
+  background: #0798FF;
+  color: #002B49; }
+
+.green-block {
+  background: #67DA75;
+  color: #004B12; }
+
+.purple-block {
+  background: #8367DA;
+  color: #2C215C; }
+
+.teal-block {
+  background: #60EAE3;
+  color: #074240; }
