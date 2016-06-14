@@ -34,8 +34,12 @@ function summary () {
 }
 
 setTimeout(function () {
-  page('/summary');
+  page('/staff-absent');
 }, 1100);
+
+// --------
+// TODO: Turn the below function into an exported `carousel.start();` method
+// --------
 
 // var carousel = ['/splash', '/staff-absent'];
 // var duration = 5000;

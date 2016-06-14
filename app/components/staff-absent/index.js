@@ -26,7 +26,7 @@ module.exports = {
   },
   methods: {
     staffAbsentNow: function () {
-      got(config.api.endpoint + 'staff/absent/now', config.got)
+      got(config.get('api') + 'staff/absent/now', config.get('got'))
         .then(response => {
           if (response.body.length > 0) {
             this.staffAbsent.now = response.body;
@@ -36,7 +36,7 @@ module.exports = {
         .catch(error => { console.log(error); });
     },
     staffAbsentSoon: function () {
-      got(config.api.endpoint + 'staff/absent/soon', config.got)
+      got(config.get('api') + 'staff/absent/soon', config.get('got'))
         .then(response => {
           if (response.body.length > 0) {
             this.staffAbsent.soon = response.body;
@@ -46,7 +46,7 @@ module.exports = {
         .catch(error => { console.log(error); });
     },
     staffAbsentAllDay: function () {
-      got(config.api.endpoint + 'staff/absent/allday', config.got)
+      got(config.get('api') + 'staff/absent/allday', config.get('got'))
         .then(response => {
           if (response.body.length > 0) {
             this.staffAbsent.allDay = response.body;

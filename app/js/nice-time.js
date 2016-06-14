@@ -4,6 +4,6 @@ const moment = require('moment');
 const config = require('../config');
 
 module.exports = function (time) {
-  var niceTime = moment(time).format(config.timeStamps.format);
+  var niceTime = moment(time).format(config.get('timeStamps.format'));
   return niceTime;
 };

@@ -1,37 +1,29 @@
 'use strict';
 
-var config = {};
+const Config = require('electron-config');
 
-config.secret = {
-  authKey: process.env.EDUMATE_API_TOKEN
-};
-
-config.api = {
-  endpoint: process.env.EDUMATE_HTTP_HOST,
-  authHeader: { 'Authorization': config.secret.authKey }
-};
-
-config.got = {
-  json: true,
-  headers: config.api.authHeader
-};
-
-config.now = {
-  date: 'dddd Do MMMM',
-  time: 'h:mm A'
-};
-
-config.timeStamps = {
-  format: 'h:mm A'
-};
-
-config.cycles = {
-  everySecond: 1000,
-  everyminute: 60000
-};
-
-config.lastUpdated = {
-  format: 'Do MMMM [at] h:mm A'
-};
-
-module.exports = config;
+module.exports = new Config({
+  defaults: {
+    api: 'http://0.0.0.0:12345',
+    got: {
+      json: true,
+      headers: {
+        Authorization: false
+      }
+    },
+    now: {
+      date: 'dddd Do MMMM',
+      time: 'h:mm A'
+    },
+    timeStamps: {
+      format: 'h:mm A'
+    },
+    cycles: {
+      everySecond: 1000,
+      everyMinute: 60000
+    },
+    lastUpdated: {
+      format: 'Do MMMM [at] h:mm A'
+    }
+  }
+});

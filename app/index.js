@@ -23,29 +23,31 @@ var app = new Vue({
       period: ''
     },
     now: {
-      date: moment().format(config.now.date),
-      time: moment().format(config.now.time)
+      date: moment().format(config.get('now.date')),
+      time: moment().format(config.get('now.time'))
     }
   },
   created: function () {
     this.fetchTimetable();
   },
   compiled: function () {
-    setInterval(this.fetchTime, config.cycles.everySecond);
-    setInterval(this.fetchTimetable, config.cycles.everyminute);
+    setInterval(this.fetchTime, config.get('cycles.everySecond'));
+    setInterval(this.fetchTimetable, config.get('cycles.everyMinute'));
   },
   methods: {
     fetchTimetable: function () {
-      got(config.api.endpoint + 'periods/current', config.got)
+      console.log(config.get('api'));
+      console.log(config.get('got'));
+      got(config.get('api') + 'periods/current', config.get('got'))
         .then(response => { this.timetable = response.body[0]; })
-        .catch(error => { console.log(error.response.body); });
+        .catch(error => { console.log(error); });
     },
     fetchTime: function () {
-      var now = moment().format(config.now.time);
+      var now = moment().format(config.get('now.time'));
       this.now.time = now;
     },
     lastUpdated: function (raw) {
-      var nice = moment(raw).format(config.lastUpdated.format);
+      var nice = moment(raw).format(config.get('lastUpdated.format'));
       return nice;
     }
   },

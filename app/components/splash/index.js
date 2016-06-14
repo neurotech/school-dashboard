@@ -10,7 +10,7 @@ module.exports = {
     return {
       title: '',
       version: process.env.npm_package_version,
-      endpoint: config.api.endpoint
+      endpoint: config.get('api')
     };
   }
 };
