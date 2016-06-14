@@ -1,0 +1,68 @@
+.block-header {
+  padding: 10px;
+  font-family: 'Brandon Bold';
+  font-size: 1.5em;
+  text-align: left;
+  margin: 0;
+}
+
+.block-content {
+  overflow: hidden;
+  background-color: $block-background;
+  margin: 0 0 10px 0;
+  font-size: 1.35em;
+}
+
+.block-name {
+  font-family: 'Brandon Medium';
+  color: $text;
+  padding: 5px;
+}
+
+.block-time {
+  font-family: 'Brandon Light';
+  color: $pale-text;
+  padding: 5px;
+}
+
+.block-reason {
+  font-family: 'Brandon Regular';
+  font-size: 1em;
+  color: $pale-text;
+  padding: 5px;
+}
+
+#staff-absent {
+  padding: 0;
+}
+
+// Coloured Blocks
+.yellow-block {
+  background: $yellow-base;
+  color: $yellow-text;
+}
+
+.red-block {
+  background: $red-base;
+  color: $red-text;
+}
+
+.blue-block {
+  background: $blue-base;
+  color: $blue-text;
+}
+
+.green-block {
+  background: $green-base;
+  color: $green-text;
+}
+
+.purple-block {
+  background: $purple-base;
+  color: $purple-text;
+}
+
+.teal-block {
+  background: $teal-base;
+  color: $teal-text;
+}
