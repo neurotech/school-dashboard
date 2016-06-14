@@ -4,12 +4,13 @@ const Vue = require('vue');
 const got = require('got');
 const moment = require('moment');
 const config = require('./config');
-const carousel = require('./carousel');
+const carousel = require('./js/carousel');
 
 var now = moment();
 
 Vue.component('splash', require('./components/splash'));
 Vue.component('staff-absent', require('./components/staff-absent'));
+Vue.component('summary', require('./components/summary'));
 
 var app = new Vue({
   el: '#app',
