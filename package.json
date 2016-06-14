@@ -26,7 +26,6 @@
     "electron-packager": "7.0.3",
     "got": "6.3.0",
     "jquery": "3.0.0",
-    "lodash": "4.13.1",
     "moment": "2.13.0",
     "page": "1.7.1",
     "pug": "2.0.0-beta2",
