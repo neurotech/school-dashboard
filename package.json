@@ -12,15 +12,21 @@
   },
   "scripts": {
     "test": "xo",
+    "prestart": "node-sass src/scss/all.scss app/css/index.css",
     "start": "electron .",
+    "prebuild": "npm run prestart",
     "build": "electron-packager . Picnic --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
   },
   "keywords": [
     "electron"
   ],
   "dependencies": {
+    "chart.js": "2.1.5",
     "electron-debug": "^1.0.0",
+    "electron-packager": "7.0.3",
     "got": "6.3.0",
+    "jquery": "3.0.0",
+    "lodash": "4.13.1",
     "moment": "2.13.0",
     "page": "1.7.1",
     "pug": "2.0.0-beta2",
