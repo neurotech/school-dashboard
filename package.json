@@ -12,10 +12,14 @@
   },
   "scripts": {
     "test": "xo",
-    "prestart": "node-sass src/scss/all.scss app/css/index.css",
+    "build:css": "node-sass src/scss/all.scss app/css/index.css",
+    "prestart": "npm run build:css",
     "start": "electron .",
-    "prebuild": "npm run prestart",
-    "build": "electron-packager . Picnic --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
+    "prebuild": "npm run build:css",
+    "build": "npm run build:osx && npm run build:linux && npm run build:windows",
+    "build:osx": "electron-packager . Picnic --overwrite --asar --out=dist --prune --platform=darwin --arch=x64 --app-version=$npm_package_version",
+    "build:linux": "electron-packager . Picnic --overwrite --out=dist --prune --platform=linux --arch=x64 --app-version=$npm_package_version",
+    "build:windows": "electron-packager . Picnic --overwrite --asar --out=dist --prune --platform=win32 --arch=x64 --app-version=$npm_package_version"
   },
   "keywords": [
     "electron"
