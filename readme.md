@@ -27,3 +27,4 @@ Builds the app for OS X, Linux, and Windows, using [electron-packager](https://g
 
  - Add config checking for presence of valid values for: `{ api: VALUE }` and `{ got: { headers: VALUE } }`
 headers
+ - Move unnecessary stuff into `./media`
