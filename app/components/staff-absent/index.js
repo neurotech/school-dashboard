@@ -9,6 +9,8 @@ module.exports = {
   template: pug.renderFile(path.join(__dirname, 'staff-absent.pug')),
   data: function () {
     return {
+      limitStart: 4,
+      limitEnd: 0,
       title: 'Staff Away',
       staffAbsent: {
         now: [],
@@ -49,10 +51,13 @@ module.exports = {
           if (response.body.length > 0) {
             this.staffAbsent.allDay = response.body;
             this.$dispatch('freshness-update', response.body[0].freshness);
+            // setInterval(function () {
+            //   this.limitEnd = this.limitStart;
+            // }.bind(this), 3000);
           }
         })
         .catch(error => { console.log(error); });
     },
-    niceTime: require(path.join(__dirname, '../../nice-time'))
+    niceTime: require(path.join(__dirname, '../../js/nice-time'))
   }
 };
