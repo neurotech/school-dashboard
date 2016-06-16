@@ -1,0 +1,33 @@
+#splash {
+	width: 100%;
+  padding: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 90vh;
+  text-align: center;
+	color: $text;
+}
+
+#splash h3 {
+	font-family: 'Brandon Light';
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	font-size: 2.5em;
+}
+
+#splash .version {
+	font-family: 'Fira Mono';
+	color: $pale-text;
+	font-size: 1.35em;
+	opacity: 0.5;
+	margin: 0.5em 0 0 0;
+}
+
+#splash-image {
+	animation: fadein 1s;
+	width: 310px;
+	height: 195px;
+	margin: 0 auto;
+	background-image: url('../images/splash.png');
+}
