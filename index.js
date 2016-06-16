@@ -1,11 +1,11 @@
 'use strict';
+
 const electron = require('electron');
 const app = electron.app;
 
 require('electron-debug')();
 
 let mainWindow;
-
 let factor = 1.5;
 
 function onClosed () {
@@ -14,8 +14,10 @@ function onClosed () {
 
 function createMainWindow () {
   const win = new electron.BrowserWindow({
+    backgroundColor: '#312e46',
     width: 1920 / factor,
-    height: 1080 / factor
+    height: 1080 / factor,
+    autoHideMenuBar: true
   });
 
   win.loadURL(`file://${__dirname}/app/index.html`);
