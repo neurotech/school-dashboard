@@ -27,4 +27,5 @@ Builds the app for OS X, Linux, and Windows, using [electron-packager](https://g
 
  - Add config checking for presence of valid values for: `{ api: VALUE }` and `{ got: { headers: VALUE } }`
 headers
- - Move unnecessary stuff into `./media`
+ - Move unnecessary stuff (sass, icons) into `./media`
+ - Further testing of `./components/staff-absent/index.js`, specifically line `34`
