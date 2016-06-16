@@ -36,8 +36,6 @@ var app = new Vue({
   },
   methods: {
     fetchTimetable: function () {
-      console.log(config.get('api'));
-      console.log(config.get('got'));
       got(config.get('api') + 'periods/current', config.get('got'))
         .then(response => { this.timetable = response.body[0]; })
         .catch(error => { console.log(error); });
@@ -54,9 +52,6 @@ var app = new Vue({
   events: {
     'freshness-update': function (freshnessRaw) {
       this.freshness = freshnessRaw;
-    },
-    'header-title-update': function (title) {
-      this.headerTitle = title;
     }
   }
 });
