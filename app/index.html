@@ -9,16 +9,16 @@
 	</head>
 	<body>
 		<div id="app" class="frame">
-			<header class="bit-1">
+			<header class="bit-1" v-if="currentView != 'splash'">
 				<div id="time" class="bit-25">{{now.time}}</div>
 				<div id="now" class="bit-75">{{now.date}} (Week {{timetable.week}} - {{timetable.period}})</div>
 		  </header>
 
-			<div id="content" class="bit-1">
+			<div id="content">
 				<component :is="currentView"></component>
 			</div>
 
-			<footer>Data last updated: {{lastUpdated(freshness)}}</footer>
+			<footer v-if="currentView != 'splash'">Data last updated: {{lastUpdated(freshness)}}</footer>
 		</div>
 	  <script src="index.js"></script>
 	</body>
