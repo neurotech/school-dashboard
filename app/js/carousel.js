@@ -33,27 +33,27 @@ function summary () {
   app.currentView = 'summary';
 }
 
-setTimeout(function () {
-  page('/staff-absent');
-}, 1100);
+// setTimeout(function () {
+//   page('/staff-absent');
+// }, 2000);
 
 // --------
 // TODO: Turn the below function into an exported `carousel.start();` method
 // --------
 
-// var carousel = ['/splash', '/staff-absent'];
-// var duration = 5000;
-//
-// function runCarousel (items) {
-//   var i = 1;
-//   setInterval(function () {
-//     page(items[i]);
-//     i++;
-//     if (i >= carousel.length) { i = 0; }
-//   }, duration);
-// }
-//
-// runCarousel(carousel);
+var carousel = ['/staff-absent', '/summary', '/splash'];
+var duration = 5000;
+
+function runCarousel (items) {
+  var i = 0;
+  setInterval(function () {
+    page(items[i]);
+    i++;
+    if (i >= carousel.length) { i = 0; }
+  }, duration);
+}
+
+runCarousel(carousel);
 
 // setInterval(function () {
 //   page('/staff-absent');
