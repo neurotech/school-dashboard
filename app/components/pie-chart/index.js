@@ -33,8 +33,5 @@ module.exports = {
       },
       options: options
     });
-  },
-  beforeDestroy: function () {
-    pieChart.destroy();
   }
 };
