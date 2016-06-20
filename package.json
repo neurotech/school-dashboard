@@ -13,7 +13,7 @@
   "scripts": {
     "test": "xo",
     "build:css": "node-sass src/scss/all.scss app/css/index.css",
-    "vendor": "cp node_modules/normalize.css/normalize.css app/vendor/normalize.css && node_modules/lemonade-grid/css/lemonade.css app/vendor/lemonade.css",
+    "vendor": "cp node_modules/normalize.css/normalize.css app/css/normalize.css && cp node_modules/lemonade-grid/css/lemonade.css app/vendor/lemonade.css",
     "prestart": "npm run build:css && npm run vendor",
     "start": "electron .",
     "prebuild": "npm run build:css && npm run vendor",
