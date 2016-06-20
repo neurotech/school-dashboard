@@ -1,28 +1,24 @@
 //- Staff Away - Now
-div(v-if="staffAbsent.now.length > 0 || staffAbsent.soon.length > 0" v-cloak).bit-2
+div(v-if="staffAbsent.now.length > 0 || staffAbsent.now.length > 0" v-cloak).bit-2
   #staff-absent-now(v-if="staffAbsent.now.length > 0").bit-1
     header.block-header.yellow-block Staff Away - Now
     table.block-content.bit-1
-      tr.block-row(v-for="item in staffAbsent.now")
-        td(width="40%").block-name {{item.firstname}} {{item.surname}}
-        td(width="60%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
+      tr(v-for="item in staffAbsent.now | orderBy 'surname' | limitBy limits.now.start limits.now.end" transition="fader" stagger="100")
+        td(width="50%").block-name {{item.firstname}} {{item.surname}}
+        td(width="50%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
   //- Staff Away - Soon
   #staff-absent-soon(v-if="staffAbsent.soon.length > 0").bit-1
     header.block-header.blue-block Staff Away - Soon
     table.block-content.bit-1
-      tr.block-row(v-for="item in staffAbsent.soon")
-        td(width="40%").block-name {{item.firstname}} {{item.surname}}
-        td(width="60%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
+      tr(v-for="item in staffAbsent.soon | orderBy 'surname' | limitBy limits.soon.start limits.soon.end" transition="fader" stagger="100")
+        td(width="50%").block-name {{item.firstname}} {{item.surname}}
+        td(width="50%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
 //- Staff Away - All Day
 div(v-if="staffAbsent.allDay.length > 0" v-cloak).bit-4
   #staff-absent-all-day.bit-1
     header.block-header.red-block Staff Away - All Day
     table.block-content.bit-1
-      //- limitBy 2 0 === Show the first two items
-      //- limitBy 2 2 === Show items 3, 4
-      //- limitBy 2 4 === Show items 5, 6
-      //- limitBy 2 6 === Show items 7, 8
-      tr(v-for="item in staffAbsent.allDay | orderBy 'surname' | limitBy limitStart limitEnd" transition="fader" stagger="100")
+      tr(v-for="item in staffAbsent.allDay | orderBy 'surname' | limitBy limits.allDay.start limits.allDay.end" transition="fader" stagger="100")
         td(width="100%").block-name {{item.firstname}} {{item.surname}}
