@@ -6,3 +6,12 @@
     opacity: 1;
   }
 }
+
+@keyframes pulseBorder {
+  0%, 100% {
+    border-color: $red-base;
+  }
+  50% {
+    border-color: lighten($red-base, 12%);
+  }
+}
