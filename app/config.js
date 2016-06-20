@@ -4,7 +4,7 @@ const Config = require('electron-config');
 
 module.exports = new Config({
   defaults: {
-    api: 'http://0.0.0.0:12345',
+    api: false,
     got: {
       json: true,
       headers: {
