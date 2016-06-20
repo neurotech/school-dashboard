@@ -13,13 +13,14 @@
   "scripts": {
     "test": "xo",
     "build:css": "node-sass src/scss/all.scss app/css/index.css",
-    "prestart": "npm run build:css",
+    "vendor": "cp node_modules/normalize.css/normalize.css app/vendor/normalize.css && node_modules/lemonade-grid/css/lemonade.css app/vendor/lemonade.css",
+    "prestart": "npm run build:css && npm run vendor",
     "start": "electron .",
-    "prebuild": "npm run build:css",
+    "prebuild": "npm run build:css && npm run vendor",
     "build": "npm run build:osx && npm run build:linux && npm run build:windows",
-    "build:osx": "electron-packager . Picnic --overwrite --asar --out=dist --prune --platform=darwin --arch=x64 --app-version=$npm_package_version",
-    "build:linux": "electron-packager . Picnic --overwrite --out=dist --prune --platform=linux --arch=x64 --app-version=$npm_package_version",
-    "build:windows": "electron-packager . Picnic --overwrite --asar --out=dist --prune --platform=win32 --arch=x64 --app-version=$npm_package_version"
+    "build:osx": "electron-packager . Picnic --overwrite --asar --out=dist --ignore='^src$' --prune --platform=darwin --arch=x64 --app-version=$npm_package_version",
+    "build:linux": "electron-packager . Picnic --overwrite --out=dist --ignore='^src$' --prune --platform=linux --arch=x64 --app-version=$npm_package_version",
+    "build:windows": "electron-packager . Picnic --overwrite --asar --out=dist --ignore='^src$' --prune --platform=win32 --arch=x64 --app-version=$npm_package_version"
   },
   "keywords": [
     "electron"
@@ -30,10 +31,11 @@
     "electron-debug": "^1.0.0",
     "electron-packager": "7.0.3",
     "got": "6.3.0",
-    "jquery": "3.0.0",
     "moment": "2.13.0",
+    "normalize.css": "4.1.1",
     "page": "1.7.1",
     "pug": "2.0.0-beta2",
+    "velocity-animate": "1.2.3",
     "vue": "1.0.24"
   },
   "devDependencies": {
