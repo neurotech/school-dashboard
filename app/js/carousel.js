@@ -2,6 +2,7 @@
 
 const page = require('page');
 var content = document.querySelector('#content');
+var carousel = {};
 
 page.base('/picnic');
 page('*', function (ctx, next) {
@@ -33,32 +34,19 @@ function summary () {
   app.currentView = 'summary';
 }
 
-// setTimeout(function () {
-//   page('/staff-absent');
-// }, 2000);
+carousel.start = function (items, duration) {
+  if (items.length === 1) {
+    setTimeout(function () {
+      page(items[0]);
+    }, duration);
+  } else {
+    var i = 0;
+    setInterval(function () {
+      page(items[i]);
+      i++;
+      if (i >= items.length) { i = 0; }
+    }, duration);
+  }
+};
 
-// --------
-// TODO: Turn the below function into an exported `carousel.start();` method
-// --------
-
-var carousel = ['/staff-absent', '/summary', '/splash'];
-var duration = 5000;
-
-function runCarousel (items) {
-  var i = 0;
-  setInterval(function () {
-    page(items[i]);
-    i++;
-    if (i >= carousel.length) { i = 0; }
-  }, duration);
-}
-
-runCarousel(carousel);
-
-// setInterval(function () {
-//   page('/staff-absent');
-// }, 3200);
-//
-// setInterval(function () {
-//   page('/splash');
-// }, 5000);
+module.exports = carousel;
