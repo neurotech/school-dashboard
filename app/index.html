@@ -11,11 +11,34 @@
 		<div id="app" class="frame">
 			<header class="bit-1" v-if="currentView != 'splash'">
 				<div id="time" class="bit-25">{{now.time}}</div>
-				<div id="now" class="bit-75">{{now.date}} (Week {{timetable.week}} - {{timetable.period}})</div>
+				<div id="now" class="bit-75">{{now.date}} <br> Week {{timetable.week}} - {{timetable.period}}</div>
 		  </header>
 
 			<div id="content">
+				<div v-if="currentView = 'splash'">
+					<div v-if="missingConfig != 'OK'" class="modal-mask">
+						<div class="modal-wrapper">
+							<div class="error-modal">
+								<div class="error-logo">
+									<icon-settings></icon-settings>
+								</div>
+								<div class="error-header">
+									<h2>Configuration Error</h2>
+								</div>
+						    <div v-for="(index, item) in missingConfig" class="error-item">
+						      <h3>Missing {{item.heading}}</h3>
+						      <p>{{item.detail}}</p>
+									<h4>Example:</h4>
+						      <pre>{{item.example}}</pre>
+									<hr v-if="missingConfig.length > 1 && $index === 0">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<component :is="currentView"></component>
+
 			</div>
 
 			<footer v-if="currentView != 'splash'">Data last updated: {{lastUpdated(freshness)}}</footer>
