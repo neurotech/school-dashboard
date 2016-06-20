@@ -3,7 +3,7 @@
 const electron = require('electron');
 const app = electron.app;
 
-require('electron-debug')();
+require('electron-debug');
 
 let mainWindow;
 let factor = 1.5;
@@ -22,6 +22,15 @@ function createMainWindow () {
 
   win.loadURL(`file://${__dirname}/app/index.html`);
   win.on('closed', onClosed);
+
+  // let webContents = win.webContents;
+  // setTimeout(function () {
+    // TODO:
+    // 1. add 'transition' class
+    // 2. insertCSS accordingly (light/dark)
+    // 3. remove 'transition' class
+    // i.e. webContents.insertCSS('body { font-size: 200%; }');
+  // }, 10000);
 
   return win;
 }
