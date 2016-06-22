@@ -30,4 +30,19 @@ absentAllDay.limit = function () {
   }, self.limits.defaults.interval);
 };
 
+absentAllDay.pages = function () {
+  var self = this;
+  self.pages.allDay.start = self.limits.allDay.end + 1;
+  self.pages.allDay.end = 0;
+  setInterval(function () {
+    if ((self.limits.allDay.start + self.limits.allDay.end) < self.staffAbsent.allDay.length) {
+      self.pages.allDay.start = self.limits.allDay.end + 1;
+      self.pages.allDay.end = self.limits.allDay.start + self.limits.allDay.end;
+    } else {
+      self.pages.allDay.start = self.limits.allDay.end + 1;
+      self.pages.allDay.end = self.staffAbsent.allDay.length;
+    }
+  }, self.limits.defaults.interval);
+};
+
 module.exports = absentAllDay;

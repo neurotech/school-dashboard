@@ -2,6 +2,7 @@
 
 const path = require('path');
 const pug = require('pug');
+const pageChange = require('../../transitions/page-change');
 
 module.exports = {
   template: pug.renderFile(path.join(__dirname, 'staff-absent.pug')),
@@ -14,10 +15,15 @@ module.exports = {
         now: { start: 4, end: 0 },
         soon: { start: 4, end: 0 },
         allDay: { start: 6, end: 0 }
+      },
+      pages: {
+        allDay: { start: 6, end: 0 }
       }
     };
   },
   activate: function (done) {
+    pageChange(done);
+
     // Staff Away - Now
     this.fetchStaffAbsentNow();
     this.limitNow();
@@ -29,8 +35,7 @@ module.exports = {
     // Staff Away - All Day
     this.fetchStaffAbsentAllDay();
     this.limitAllDay();
-
-    done();
+    this.pagesAllDay();
   },
   methods: {
     niceTime: require(path.join(__dirname, '../../js/nice-time')),
@@ -40,7 +45,8 @@ module.exports = {
     fetchStaffAbsentAllDay: require(path.join(__dirname, 'absent-allday')).fetch,
     limitNow: require(path.join(__dirname, 'absent-now')).limit,
     limitSoon: require(path.join(__dirname, 'absent-soon')).limit,
-    limitAllDay: require(path.join(__dirname, 'absent-allday')).limit
+    limitAllDay: require(path.join(__dirname, 'absent-allday')).limit,
+    pagesAllDay: require(path.join(__dirname, 'absent-allday')).pages
   },
   transitions: {
     'fader': require(path.join(__dirname, '../../transitions/fader'))

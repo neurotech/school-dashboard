@@ -16,9 +16,15 @@ div(v-if="staffAbsent.now.length > 0 || staffAbsent.now.length > 0" v-cloak).bit
         td(width="50%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
 //- Staff Away - All Day
-div(v-if="staffAbsent.allDay.length > 0" v-cloak).bit-4
+div(v-if="staffAbsent.allDay.length > 0" v-cloak).bit-2
   #staff-absent-all-day.bit-1
-    header.block-header.red-block Staff Away - All Day
+    header.bit-1.block-header.red-block
+      .block-total {{staffAbsent.allDay.length}}
+      .block-title Staff Away All Day
+
+    .block-progress.red-block.red-progress-container
+      .block-progress-bar.red-progress-bar(style="width: {{pages.allDay.end / staffAbsent.allDay.length * 100}}%;")
+
     table.block-content.bit-1
       tr(v-for="item in staffAbsent.allDay | orderBy 'surname' | limitBy limits.allDay.start limits.allDay.end" transition="fader" stagger="100")
         td(width="100%").block-name {{item.firstname}} {{item.surname}}
