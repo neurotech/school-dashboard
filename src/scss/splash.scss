@@ -1,11 +1,10 @@
+$duration: .3s;
+$delay: $duration * 1.2;
+
 #splash {
-	width: 100%;
+	position: fixed;
+	bottom: 15%;
   padding: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 90vh;
-  text-align: center;
 	color: $text;
 }
 
@@ -13,21 +12,58 @@
 	font-family: 'Brandon Light';
 	letter-spacing: 0.5em;
 	text-transform: uppercase;
-	font-size: 2.5em;
+	font-size: 8em;
+	opacity: 0;
+	animation: splashDown $duration;
+  animation-fill-mode: forwards;
+	animation-delay: $delay;
 }
 
-#splash .version {
-	font-family: 'Fira Mono';
-	color: $pale-text;
-	font-size: 1.35em;
-	opacity: 0.5;
-	margin: 0.5em 0 0 0;
+#splash .separator {
+	width: 100%;
+	height: 4px;
+	background: $block-background;
+	margin: 0 0 23px 0;
+	opacity: 0;
+	animation: splashIn $duration;
+  animation-fill-mode: forwards;
+	animation-delay: $delay * 1.5;
 }
 
-#splash-image {
-	animation: fadein 1s;
-	width: 310px;
-	height: 195px;
-	margin: 0 auto;
-	background-image: url('../images/splash.png');
+#splash p {
+	font-family: 'Brandon Light';
+  font-size: 3em;
+	color: rgba($pale-text, 1);
+	opacity: 0;
+	animation: splashUp $duration;
+  animation-fill-mode: forwards;
+	animation-delay: $delay * 3;
+}
+
+#splash p [class^='letter-'] {
+	font-family: 'Brandon Regular';
+}
+
+#splash .letter-p {
+	color: $red-base;
+}
+
+#splash .letter-i {
+	color: $yellow-base;
+}
+
+#splash .letter-c {
+	color: $green-base;
+}
+
+#splash .letter-n {
+	color: $blue-base;
+}
+
+#splash .letter-ii {
+	color: $teal-base;
+}
+
+#splash .letter-cc {
+	color: $purple-base;
 }
