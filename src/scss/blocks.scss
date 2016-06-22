@@ -1,16 +1,38 @@
 .block-header {
   padding: 10px;
   font-family: 'Brandon Bold';
-  font-size: 1.75em;
+  font-size: 2.5em;
   text-align: left;
   margin: 0;
+}
+
+.block-total {
+  padding: 0 10px 0 0;
+  margin: 0 0 0 5px;
+}
+
+.block-title {}
+
+.block-progress {
+  width: 100%;
+  height: 12px;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.block-progress-bar {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  transition: width .33s;
 }
 
 .block-content {
   overflow: hidden;
   background-color: $block-background;
   margin: 0 0 10px 0;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .block-name {
@@ -36,33 +58,26 @@
   padding: 0;
 }
 
-// Coloured Blocks
-.yellow-block {
-  background: $yellow-base;
-  color: $yellow-text;
-}
+// Coloured Blocks and Bars
+$progressContainerTint: 0.3;
+$progressBarTint: 0.4;
 
-.red-block {
-  background: $red-base;
-  color: $red-text;
-}
+.yellow-block { background: $yellow-base; color: $yellow-text; }
+.red-block { background: $red-base; color: $red-text; }
+.blue-block { background: $blue-base; color: $blue-text; }
+.green-block { background: $green-base; color: $green-text; }
+.purple-block { background: $purple-base; color: $purple-text; }
+.teal-block { background: $teal-base; color: $teal-text; }
 
-.blue-block {
-  background: $blue-base;
-  color: $blue-text;
-}
-
-.green-block {
-  background: $green-base;
-  color: $green-text;
-}
-
-.purple-block {
-  background: $purple-base;
-  color: $purple-text;
-}
-
-.teal-block {
-  background: $teal-base;
-  color: $teal-text;
-}
+.yellow-progress-container { background-color: rgba($yellow-base, $progressContainerTint); }
+.yellow-progress-bar { background-color: rgba($yellow-base, $progressBarTint); }
+.red-progress-container { background-color: rgba($red-base, $progressContainerTint); }
+.red-progress-bar { background-color: rgba($red-base, $progressBarTint); }
+.blue-progress-container { background-color: rgba($blue-base, $progressContainerTint); }
+.blue-progress-bar { background-color: rgba($blue-base, $progressBarTint); }
+.green-progress-container { background-color: rgba($green-base, $progressContainerTint); }
+.green-progress-bar { background-color: rgba($green-base, $progressBarTint); }
+.purple-progress-container { background-color: rgba($purple-base, $progressContainerTint); }
+.purple-progress-bar { background-color: rgba($purple-base, $progressBarTint); }
+.teal-progress-container { background-color: rgba($teal-base, $progressContainerTint); }
+.teal-progress-bar { background-color: rgba($teal-base, $progressBarTint); }
