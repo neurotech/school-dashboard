@@ -1,12 +1,15 @@
 'use strict';
 
+const timeOfDay = require('./app/js/time-of-day');
 const electron = require('electron');
 const app = electron.app;
+
+const globalShortcut = electron.globalShortcut;
 
 require('electron-debug');
 
 let mainWindow;
-let factor = 1.5;
+let factor = 1.25;
 
 function onClosed () {
   mainWindow = null;
@@ -22,15 +25,6 @@ function createMainWindow () {
 
   win.loadURL(`file://${__dirname}/app/index.html`);
   win.on('closed', onClosed);
-
-  // let webContents = win.webContents;
-  // setTimeout(function () {
-    // TODO:
-    // 1. add 'transition' class
-    // 2. insertCSS accordingly (light/dark)
-    // 3. remove 'transition' class
-    // i.e. webContents.insertCSS('body { font-size: 200%; }');
-  // }, 10000);
 
   return win;
 }
@@ -49,4 +43,21 @@ app.on('activate', () => {
 
 app.on('ready', () => {
   mainWindow = createMainWindow();
+
+  if (timeOfDay() === 'morning' || timeOfDay() === 'afternoon') {
+    // light.css
+    console.log('Good morning or afternoon!?');
+  } else {
+    // dark.css
+    console.log('GOOD EVENING!');
+  }
+
+  let webContents = mainWindow.webContents;
+  globalShortcut.register('CommandOrControl+Alt+K', function () {
+    webContents.toggleDevTools();
+  });
+});
+
+app.on('will-quit', function () {
+  globalShortcut.unregisterAll();
 });
