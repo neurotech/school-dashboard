@@ -6,11 +6,12 @@ const moment = require('moment');
 const config = require('./config');
 const check = require('./check');
 const carousel = require('./js/carousel');
+const pageChange = require('./transitions/page-change');
 
 var now = moment();
-// var routes = ['/staff-absent', '/summary', '/splash'];
-var routes = ['/staff-absent', '/splash'];
-var duration = 10000;
+
+var routes = ['staff-absent'];
+var duration = 3000;
 
 Vue.component('splash', require('./components/splash'));
 Vue.component('staff-absent', require('./components/staff-absent'));
@@ -25,7 +26,6 @@ var app = new Vue({
   el: '#app',
   data: {
     currentView: 'splash',
-    headerTitle: 'Picnic',
     missingConfig: check(),
     freshness: now,
     timetable: {
@@ -40,9 +40,12 @@ var app = new Vue({
   created: function () {
     this.fetchTimetable();
   },
-  compiled: function () {
+  ready: function () {
     setInterval(this.fetchTime, config.get('cycles.everySecond'));
     setInterval(this.fetchTimetable, config.get('cycles.everyMinute'));
+  },
+  activate: function (done) {
+    pageChange(done);
   },
   methods: {
     fetchTime: function () {
@@ -60,8 +63,8 @@ var app = new Vue({
     }
   },
   events: {
-    'freshness-update': function (freshnessRaw) {
-      this.freshness = freshnessRaw;
+    'freshness-update': function (dateTime) {
+      this.freshness = dateTime;
     }
   }
 });
