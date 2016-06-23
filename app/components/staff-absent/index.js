@@ -17,6 +17,8 @@ module.exports = {
         allDay: { start: 6, end: 0 }
       },
       pages: {
+        now: { start: 4, end: 0 },
+        soon: { start: 4, end: 0 },
         allDay: { start: 6, end: 0 }
       }
     };
@@ -27,10 +29,12 @@ module.exports = {
     // Staff Away - Now
     this.fetchStaffAbsentNow();
     this.limitNow();
+    this.pagesNow();
 
     // Staff Away - Soon
     this.fetchStaffAbsentSoon();
     this.limitSoon();
+    this.pagesSoon();
 
     // Staff Away - All Day
     this.fetchStaffAbsentAllDay();
@@ -46,6 +50,8 @@ module.exports = {
     limitNow: require(path.join(__dirname, 'absent-now')).limit,
     limitSoon: require(path.join(__dirname, 'absent-soon')).limit,
     limitAllDay: require(path.join(__dirname, 'absent-allday')).limit,
+    pagesNow: require(path.join(__dirname, 'absent-now')).pages,
+    pagesSoon: require(path.join(__dirname, 'absent-soon')).pages,
     pagesAllDay: require(path.join(__dirname, 'absent-allday')).pages
   },
   transitions: {

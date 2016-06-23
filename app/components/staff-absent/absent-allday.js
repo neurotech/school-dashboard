@@ -35,12 +35,14 @@ absentAllDay.pages = function () {
   self.pages.allDay.start = self.limits.allDay.end + 1;
   self.pages.allDay.end = 0;
   setInterval(function () {
-    if ((self.limits.allDay.start + self.limits.allDay.end) < self.staffAbsent.allDay.length) {
-      self.pages.allDay.start = self.limits.allDay.end + 1;
-      self.pages.allDay.end = self.limits.allDay.start + self.limits.allDay.end;
-    } else {
-      self.pages.allDay.start = self.limits.allDay.end + 1;
-      self.pages.allDay.end = self.staffAbsent.allDay.length;
+    if (self.staffAbsent.allDay.length > 0) {
+      if ((self.limits.allDay.start + self.limits.allDay.end) < self.staffAbsent.allDay.length) {
+        self.pages.allDay.start = self.limits.allDay.end + 1;
+        self.pages.allDay.end = self.limits.allDay.start + self.limits.allDay.end;
+      } else {
+        self.pages.allDay.start = self.limits.allDay.end + 1;
+        self.pages.allDay.end = self.staffAbsent.allDay.length;
+      }
     }
   }, self.limits.defaults.interval);
 };

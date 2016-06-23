@@ -1,7 +1,12 @@
 //- Staff Away - Now
-div(v-if="staffAbsent.now.length > 0 || staffAbsent.now.length > 0" v-cloak).bit-2
+div(v-if="staffAbsent.now.length > 0 || staffAbsent.soon.length > 0" v-cloak).bit-2
   #staff-absent-now(v-if="staffAbsent.now.length > 0").bit-1
-    header.block-header.yellow-block Staff Away - Now
+    header.bit-1.block-header.yellow-block
+      <p><strong>{{staffAbsent.now.length}}</strong> Staff Away Now</p>
+
+    .block-progress.yellow-block.yellow-progress-container
+      .block-progress-bar.yellow-progress-bar(style="width: {{pages.now.end / staffAbsent.now.length * 100}}%;")
+
     table.block-content.bit-1
       tr(v-for="item in staffAbsent.now | orderBy 'surname' | limitBy limits.now.start limits.now.end" transition="fader" stagger="100")
         td(width="50%").block-name {{item.firstname}} {{item.surname}}
@@ -9,7 +14,12 @@ div(v-if="staffAbsent.now.length > 0 || staffAbsent.now.length > 0" v-cloak).bit
 
   //- Staff Away - Soon
   #staff-absent-soon(v-if="staffAbsent.soon.length > 0").bit-1
-    header.block-header.blue-block Staff Away - Soon
+    header.bit-1.block-header.blue-block
+      <p><strong>{{staffAbsent.soon.length}}</strong> Staff Away Soon</p>
+
+    .block-progress.blue-block.blue-progress-container
+      .block-progress-bar.blue-progress-bar(style="width: {{pages.soon.end / staffAbsent.soon.length * 100}}%;")
+
     table.block-content.bit-1
       tr(v-for="item in staffAbsent.soon | orderBy 'surname' | limitBy limits.soon.start limits.soon.end" transition="fader" stagger="100")
         td(width="50%").block-name {{item.firstname}} {{item.surname}}
@@ -19,8 +29,7 @@ div(v-if="staffAbsent.now.length > 0 || staffAbsent.now.length > 0" v-cloak).bit
 div(v-if="staffAbsent.allDay.length > 0" v-cloak).bit-2
   #staff-absent-all-day.bit-1
     header.bit-1.block-header.red-block
-      .block-total {{staffAbsent.allDay.length}}
-      .block-title Staff Away All Day
+      <p><strong id="soonCountUp">{{staffAbsent.allDay.length}}</strong> Staff Away All Day</p>
 
     .block-progress.red-block.red-progress-container
       .block-progress-bar.red-progress-bar(style="width: {{pages.allDay.end / staffAbsent.allDay.length * 100}}%;")

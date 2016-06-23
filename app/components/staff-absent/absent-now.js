@@ -29,4 +29,19 @@ absentNow.limit = function () {
   }, self.limits.defaults.interval);
 };
 
+absentNow.pages = function () {
+  var self = this;
+  setInterval(function () {
+    if (self.staffAbsent.now.length > 0) {
+      if ((self.limits.now.start + self.limits.now.end) < self.staffAbsent.now.length) {
+        self.pages.now.start = self.limits.now.end + 1;
+        self.pages.now.end = self.limits.now.start + self.limits.now.end;
+      } else {
+        self.pages.now.start = self.limits.now.end + 1;
+        self.pages.now.end = self.staffAbsent.now.length;
+      }
+    }
+  }, self.limits.defaults.interval);
+};
+
 module.exports = absentNow;
