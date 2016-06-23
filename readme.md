@@ -26,8 +26,7 @@ Builds the app for OS X, Linux, and Windows, using [electron-packager](https://g
 # TODO
 
  - Light/dark mode
- - DRY up pages() method in `absent-allday.js` and add to other `absent-` modules.
- - [countUp.js](https://inorganik.github.io/countUp.js/)
+ - [countUp.js](https://inorganik.github.io/countUp.js/) as 'transition'
  - `time-of-day.js` should return `'dawn'` (5AM to 7AM)
 
 ```javascript
