@@ -10,14 +10,14 @@
 	<body>
 		<div id="app" class="frame">
 			<header class="bit-1" v-cloak>
-				<div id="time" class="bit-2">{{now.time}}</div>
+				<div id="time" class="bit-2" transition="fader">{{now.time}}</div>
 				<div id="now" class="bit-2">
 					<div id="timetable">Week {{timetable.week}} - {{timetable.period}}</div>
 					<div id="date">{{now.date}}</div>
 				</div>
 		  </header>
 
-			<div id="content">
+			<div id="picnic-content">
 				<div v-if="currentView = 'splash'">
 					<div v-if="missingConfig != 'OK'" class="modal-mask">
 						<div class="modal-wrapper">
