@@ -2,8 +2,6 @@
 const path = require('path');
 const fs = require('fs');
 const base = require('./base');
-const light = require('./light');
-const dark = require('./dark');
 
 let sass = path.join(__dirname, '../scss/palette.scss');
 
