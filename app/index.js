@@ -9,7 +9,6 @@ const carousel = require('./js/carousel');
 const pageChange = require('./transitions/page-change');
 
 var now = moment();
-
 var routes = ['staff-absent'];
 var duration = 3000;
 
@@ -17,10 +16,6 @@ Vue.component('splash', require('./components/splash'));
 Vue.component('staff-absent', require('./components/staff-absent'));
 Vue.component('summary', require('./components/summary'));
 Vue.component('icon-settings', require('./components/icon-settings'));
-
-if (check() === 'OK') {
-  carousel.start(routes, duration);
-}
 
 var app = new Vue({
   el: '#app',
@@ -68,3 +63,5 @@ var app = new Vue({
     }
   }
 });
+
+if (check() === 'OK') { carousel.start(routes, duration); }
