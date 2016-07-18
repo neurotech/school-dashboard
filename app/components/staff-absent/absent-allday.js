@@ -32,8 +32,7 @@ absentAllDay.limit = function () {
 
 absentAllDay.pages = function () {
   var self = this;
-  self.pages.allDay.start = self.limits.allDay.end + 1;
-  self.pages.allDay.end = 0;
+  self.pages.allDay.end = self.limits.allDay.start;
   setInterval(function () {
     if (self.staffAbsent.allDay.length > 0) {
       if ((self.limits.allDay.start + self.limits.allDay.end) < self.staffAbsent.allDay.length) {

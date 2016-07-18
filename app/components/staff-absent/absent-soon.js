@@ -31,6 +31,7 @@ absentSoon.limit = function () {
 
 absentSoon.pages = function () {
   var self = this;
+  self.pages.soon.end = self.limits.soon.start;
   setInterval(function () {
     if (self.staffAbsent.soon.length > 0) {
       if ((self.limits.soon.start + self.limits.soon.end) < self.staffAbsent.soon.length) {

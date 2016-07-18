@@ -31,6 +31,7 @@ absentNow.limit = function () {
 
 absentNow.pages = function () {
   var self = this;
+  self.pages.now.end = self.limits.now.start;
   setInterval(function () {
     if (self.staffAbsent.now.length > 0) {
       if ((self.limits.now.start + self.limits.now.end) < self.staffAbsent.now.length) {
