@@ -24,13 +24,14 @@
   padding: 0;
   margin: 0;
   transition: width .33s;
+  text-align: right;
 }
 
 .block-content {
   overflow: hidden;
   background-color: $block-background;
   margin: 0 0 10px 0;
-  font-size: 2em;
+  font-size: 1.85em;
 }
 
 .block-name {
