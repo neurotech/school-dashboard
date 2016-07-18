@@ -27,19 +27,6 @@
   }
 }
 
-@keyframes splashIn {
-  0% {
-    background-color: white;
-    opacity: 0;
-    transform: translateX(200px);
-  }
-  100% {
-    background-color: $block-background;
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-
 @keyframes splashUp {
   0% {
     opacity: 0;
