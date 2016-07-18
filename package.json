@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "chart.js": "2.1.5",
+    "countup.js": "1.7.1",
     "electron-config": "0.1.1",
     "electron-debug": "^1.0.0",
     "electron-packager": "7.0.3",
