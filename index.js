@@ -1,19 +1,13 @@
 'use strict';
-
-const timeOfDay = require('./app/js/time-of-day');
 const electron = require('electron');
 const app = electron.app;
-
 const globalShortcut = electron.globalShortcut;
-
 require('electron-debug');
 
 let mainWindow;
 let factor = 1.25;
 
-function onClosed () {
-  mainWindow = null;
-}
+function onClosed () { mainWindow = null; }
 
 function createMainWindow () {
   const win = new electron.BrowserWindow({
@@ -43,18 +37,10 @@ app.on('activate', () => {
 
 app.on('ready', () => {
   mainWindow = createMainWindow();
+  let page = mainWindow.webContents;
 
-  if (timeOfDay() === 'morning' || timeOfDay() === 'afternoon') {
-    // light.css
-    console.log('Good morning or afternoon!?');
-  } else {
-    // dark.css
-    console.log('GOOD EVENING!');
-  }
-
-  let webContents = mainWindow.webContents;
   globalShortcut.register('CommandOrControl+Alt+K', function () {
-    webContents.toggleDevTools();
+    page.toggleDevTools();
   });
 });
 
