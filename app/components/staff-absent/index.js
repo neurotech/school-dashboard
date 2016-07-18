@@ -54,6 +54,9 @@ module.exports = {
     pagesSoon: require(path.join(__dirname, 'absent-soon')).pages,
     pagesAllDay: require(path.join(__dirname, 'absent-allday')).pages
   },
+  components: {
+    'counter': require('../counter')
+  },
   transitions: {
     'fader': require(path.join(__dirname, '../../transitions/fader'))
   }
