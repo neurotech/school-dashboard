@@ -17,13 +17,13 @@ body {
 	height: 100%;
 }
 
-#content {
+#picnic-content {
 	min-height: 500px;
 	padding: 10px;
   opacity: 1;
   transition: opacity .25s ease-out;
 }
 
-#content.transition {
+#picnic-content.transition {
   opacity: 0;
 }
