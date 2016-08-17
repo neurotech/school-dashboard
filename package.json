@@ -18,9 +18,9 @@
     "start": "electron .",
     "prebuild": "npm run build:css && npm run vendor",
     "build": "npm run build:osx && npm run build:linux && npm run build:windows",
-    "build:osx": "electron-packager . Picnic --overwrite --asar --out=dist --ignore='^src$' --prune --platform=darwin --arch=x64 --app-version=$npm_package_version",
-    "build:linux": "electron-packager . Picnic --overwrite --out=dist --ignore='^src$' --prune --platform=linux --arch=x64 --app-version=$npm_package_version",
-    "build:windows": "electron-packager . Picnic --overwrite --asar --out=dist --ignore='^src$' --prune --platform=win32 --arch=ia32 --app-version=$npm_package_version"
+    "build:osx": "npm run prebuild && electron-packager . Picnic --overwrite --asar --out=dist --ignore='^src$' --prune --platform=darwin --arch=x64 --app-version=$npm_package_version",
+    "build:linux": "npm run prebuild && electron-packager . Picnic --overwrite --out=dist --ignore='^src$' --prune --platform=linux --arch=x64 --app-version=$npm_package_version",
+    "build:windows": "npm run prebuild && electron-packager . Picnic --overwrite --asar --out=dist --ignore='^src$' --prune --platform=win32 --arch=ia32 --app-version=$npm_package_version"
   },
   "keywords": [
     "electron"
