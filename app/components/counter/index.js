@@ -18,7 +18,6 @@ module.exports = {
       suffix: ''
     };
     var demo = new CountUp(this.$el, 1, this.count, 0, Number(this.duration), options);
-    console.log(this.duration);
     setTimeout(function () {
       demo.start();
     }, 600);
