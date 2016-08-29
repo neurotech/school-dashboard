@@ -1,5 +1,4 @@
 'use strict';
-
 const Velocity = require('velocity-animate');
 
 module.exports = {
