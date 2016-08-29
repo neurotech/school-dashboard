@@ -1,70 +1,44 @@
-$duration: .3s;
-$delay: $duration * 1.2;
-
 #splash {
-	position: fixed;
-	bottom: 15%;
-  padding: 30px;
-	color: $text;
-}
-
-#splash h3 {
-	font-family: 'Brandon Light';
-	letter-spacing: 0.5em;
-	text-transform: uppercase;
-	font-size: 8em;
-	opacity: 0;
-	animation: splashDown $duration;
-  animation-fill-mode: forwards;
-	animation-delay: $delay * 1.5;
-}
-
-#splash .separator {
-	width: 100%;
-	height: 4px;
-	background: $block-background;
-	border-radius: 3px;
-	margin: 0 0 23px 0;
-	opacity: 0;
-	animation: fadein $duration;
-  animation-fill-mode: forwards;
-	animation-delay: $delay * 2;
-}
-
-#splash p {
-	font-family: 'Brandon Light';
-  font-size: 3em;
-	color: rgba($pale-text, 1);
-	opacity: 0;
-	animation: splashUp $duration;
-  animation-fill-mode: forwards;
-	animation-delay: $delay * 3;
-}
-
-#splash p [class^='letter-'] {
-	font-family: 'Brandon Regular';
-}
-
-#splash .letter-p {
-	color: $red-base;
-}
-
-#splash .letter-i {
-	color: $yellow-base;
-}
-
-#splash .letter-c {
-	color: $green-base;
-}
-
-#splash .letter-n {
-	color: $blue-base;
-}
-
-#splash .letter-ii {
-	color: $teal-base;
-}
-
-#splash .letter-cc {
-	color: $purple-base;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 75%;
+  height: 75%;
+  position: absolute;
+  top: calc(50vh - (75% / 2));
+  left: calc(50vw - (75% / 2));
+  text-align: center;
+  & #splash-header {
+    width: 100%;
+    margin: auto 0 0 0;
+    font-family: 'Brandon Light';
+    font-size: 6em;
+    text-shadow: 0 0 10px rgba(white, 0.5);
+    & .splash-jiggle {
+      display: inline-block;
+      margin: 0 $padding-unit * 1.33;
+      animation-name: splash-jiggle, rainbow;
+      animation-duration: 500ms, 1500ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: both;
+    }
+  }
+  & #splash-subtitle {
+    width: 100%;
+    margin: $padding-unit * 1.5 0 auto 0;
+    font-family: 'Brandon Thin';
+    font-size: 2.75em;
+    color: white;
+    font-variant: small-caps;
+    & .splash-fade-in {
+      display: inline-block;
+      margin: 0 1px;
+      animation-name: splash-fade-in;
+      animation-duration: 700ms;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    }
+  }
 }
