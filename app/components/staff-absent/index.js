@@ -1,62 +1,44 @@
 'use strict';
-
 const path = require('path');
 const pug = require('pug');
-const pageChange = require('../../transitions/page-change');
+const config = require('../../config');
+const pageChange = require('../../lib/page-change');
 
 module.exports = {
   template: pug.renderFile(path.join(__dirname, 'staff-absent.pug')),
   data: function () {
     return {
       title: 'Staff Away',
-      staffAbsent: { now: [], soon: [], allDay: [] },
-      limits: {
-        defaults: { start: 6, end: 0, interval: 3750 },
-        now: { start: 4, end: 0 },
-        soon: { start: 4, end: 0 },
-        allDay: { start: 6, end: 0 }
+      iterateLimitInterval: null,
+      staffAway: {
+        now: [],
+        soon: [],
+        allDay: []
       },
-      pages: {
-        now: { start: 4, end: 0 },
-        soon: { start: 4, end: 0 },
-        allDay: { start: 6, end: 0 }
+      limits: {
+        now: { start: config.get('pagination.threshold.now'), end: 0 },
+        soon: { start: config.get('pagination.threshold.soon'), end: 0 },
+        allDay: { start: config.get('pagination.threshold.allDay'), end: 0 }
       }
     };
   },
+  mixins: [
+    require(path.join(__dirname, '../../mixins/fetch-staff-away')),
+    require(path.join(__dirname, '../../mixins/set-limits')),
+    require(path.join(__dirname, '../../mixins/nice-time')),
+    require(path.join(__dirname, '../../mixins/progress-bar'))
+  ],
   activate: function (done) {
     pageChange(done);
-
-    // Staff Away - Now
-    this.fetchStaffAbsentNow();
-    this.limitNow();
-    this.pagesNow();
-
-    // Staff Away - Soon
-    this.fetchStaffAbsentSoon();
-    this.limitSoon();
-    this.pagesSoon();
-
-    // Staff Away - All Day
-    this.fetchStaffAbsentAllDay();
-    this.limitAllDay();
-    this.pagesAllDay();
+    this.iterateLimitInterval = setInterval(this.iterateLimits, 3500);
   },
-  methods: {
-    niceTime: require(path.join(__dirname, '../../js/nice-time')),
-    paginate: require(path.join(__dirname, '../../js/paginate')),
-    fetchStaffAbsentNow: require(path.join(__dirname, 'absent-now')).fetch,
-    fetchStaffAbsentSoon: require(path.join(__dirname, 'absent-soon')).fetch,
-    fetchStaffAbsentAllDay: require(path.join(__dirname, 'absent-allday')).fetch,
-    limitNow: require(path.join(__dirname, 'absent-now')).limit,
-    limitSoon: require(path.join(__dirname, 'absent-soon')).limit,
-    limitAllDay: require(path.join(__dirname, 'absent-allday')).limit,
-    pagesNow: require(path.join(__dirname, 'absent-now')).pages,
-    pagesSoon: require(path.join(__dirname, 'absent-soon')).pages,
-    pagesAllDay: require(path.join(__dirname, 'absent-allday')).pages
+  created: function () {
+    this.fetchAllData();
   },
-  components: {
-    'counter': require('../counter')
+  beforeDestroy: function () {
+    clearInterval(this.iterateLimitInterval);
   },
+  methods: {},
   transitions: {
     'fader': require(path.join(__dirname, '../../transitions/fader'))
   }
