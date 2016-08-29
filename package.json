@@ -2,6 +2,7 @@
   "name": "app",
   "productName": "Picnic",
   "version": "0.0.1",
+  "main": "main.js",
   "description": "Dashboard",
   "license": "MIT",
   "repository": "https://github.com/neurotech/picnic",
@@ -12,7 +13,8 @@
   },
   "scripts": {
     "test": "xo",
-    "build:css": "node src/palette/index.js && node-sass src/scss/all.scss app/css/index.css",
+    "watch": "node-sass --watch src/scss/all.scss app/css/index.css",
+    "build:css": "node-sass src/scss/all.scss app/css/index.css",
     "vendor": "cp node_modules/normalize.css/normalize.css app/css/normalize.css && cp node_modules/lemonade-grid/css/lemonade.css app/vendor/lemonade.css",
     "prestart": "npm run build:css && npm run vendor",
     "start": "electron .",
@@ -26,8 +28,6 @@
     "electron"
   ],
   "dependencies": {
-    "chart.js": "2.1.5",
-    "countup.js": "1.7.1",
     "electron-config": "0.2.1",
     "electron-debug": "1.0.1",
     "electron-packager": "7.3.0",
@@ -36,20 +36,12 @@
     "normalize.css": "4.1.1",
     "pug": "2.0.0-beta2",
     "velocity-animate": "1.2.3",
-    "vue": "1.0.24"
+    "vue": "1.0.26"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
     "electron-packager": "7.6.0",
     "electron-prebuilt": "1.3.3",
-    "semistandard": "8.0.0",
-    "xo": "^0.15.0"
-  },
-  "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "browser"
-    ]
+    "semistandard": "8.0.0"
   }
 }
