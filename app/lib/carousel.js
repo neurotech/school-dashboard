@@ -8,7 +8,6 @@ var cycle = function (items, index) {
       app.currentView = items[0].view;
     }, items[0].duration);
   } else {
-    console.log('Set currentView to: ' + items[index].view);
     app.currentView = items[index].view;
     setTimeout(cycle.bind(null, items, (index + 1) % items.length), items[index].duration);
   }
