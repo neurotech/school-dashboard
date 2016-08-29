@@ -2,7 +2,7 @@
 
 const path = require('path');
 const pug = require('pug');
-const pageChange = require('../../transitions/page-change');
+const pageChange = require('../../lib/page-change');
 
 module.exports = {
   template: pug.renderFile(path.join(__dirname, 'splash.pug')),
@@ -13,6 +13,7 @@ module.exports = {
       version: process.env.npm_package_version
     };
   },
+  mixins: [require(path.join(__dirname, '../../mixins/wrap-each-character'))],
   activate: function (done) {
     pageChange(done);
   }

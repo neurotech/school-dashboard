@@ -1,39 +1,33 @@
-//- Staff Away - Now
-div(v-if="staffAbsent.now.length > 0 || staffAbsent.soon.length > 0" v-cloak).bit-2
-  #staff-absent-now(v-if="staffAbsent.now.length > 0").bit-1
-    header.bit-1.block-header.yellow-block
-      counter(v-bind:count="staffAbsent.now.length" duration="3")
-      p Staff Away Now
-    .block-progress.yellow-block.yellow-progress-container
-      .block-progress-bar.yellow-progress-bar(style="width: {{Math.round(pages.now.end / staffAbsent.now.length * 100)}}%;")
+#column(v-if="staffAway.now.length > 0 || staffAway.soon.length > 0")
+  #block(v-if="staffAway.now.length > 0" transition="fader")
+    header.yellow-block #[strong {{staffAway.now.length}}] Staff Away Now
+    #progress-container.yellow-progress-container
+      #progress-bar.yellow-progress-bar(v-bind:style="{ maxWidth: progressBarWidth(staffAway.now.length, limits.now.end, limits.now.start) + '%' }")
+    #block-content
+      table
+        tbody
+          tr(v-for="item in staffAway.now | orderBy 'surname' | limitBy limits.now.start limits.now.end" transition="fader" stagger="100")
+            td(width="50%" class="staff-away-name") {{item.firstname}} {{item.surname}}
+            td(width="50%" class="staff-away-time") {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} #[span(class="time-separator") to] {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
-    table.block-content.bit-1
-      tr(v-for="item in staffAbsent.now | orderBy 'surname' | limitBy limits.now.start limits.now.end" transition="fader" stagger="100")
-        td(width="50%").block-name {{item.firstname}} {{item.surname}}
-        td(width="50%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
+  #block(v-if="staffAway.soon.length > 0" transition="fader")
+    header.blue-block #[strong {{staffAway.soon.length}}] Staff Away Soon
+    #progress-container.blue-progress-container
+      #progress-bar.blue-progress-bar(v-bind:style="{ maxWidth: progressBarWidth(staffAway.soon.length, limits.soon.end, limits.soon.start) + '%' }")
+    #block-content
+      table
+        tbody
+          tr(v-for="item in staffAway.soon | orderBy 'surname' | limitBy limits.soon.start limits.soon.end" transition="fader" stagger="100")
+            td(width="50%" class="staff-away-name") {{item.firstname}} {{item.surname}}
+            td(width="50%" class="staff-away-time") {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} #[span(class="time-separator") to] {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
-  //- Staff Away - Soon
-  #staff-absent-soon(v-if="staffAbsent.soon.length > 0").bit-1
-    header.bit-1.block-header.blue-block
-      counter(v-bind:count="staffAbsent.soon.length" duration="3")
-      p Staff Away Soon
-    .block-progress.blue-block.blue-progress-container
-      .block-progress-bar.blue-progress-bar(style="width: {{Math.round(pages.soon.end / staffAbsent.soon.length * 100)}}%;")
-
-    table.block-content.bit-1
-      tr(v-for="item in staffAbsent.soon | orderBy 'surname' | limitBy limits.soon.start limits.soon.end" transition="fader" stagger="100")
-        td(width="50%").block-name {{item.firstname}} {{item.surname}}
-        td(width="50%").block-time {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} to {{niceTime(item.dateTo + ' ' + item.timeTo)}}
-
-//- Staff Away - All Day
-div(v-if="staffAbsent.allDay.length > 0" v-cloak).bit-2
-  #staff-absent-all-day.bit-1
-    header.bit-1.block-header.red-block
-      counter(v-bind:count="staffAbsent.allDay.length" duration="3")
-      p Staff Away All Day
-    .block-progress.red-progress-container
-      .block-progress-bar.red-progress-bar(style="width: {{Math.round(pages.allDay.end / staffAbsent.allDay.length * 100)}}%;")
-
-    table.block-content.bit-1
-      tr(v-for="item in staffAbsent.allDay | orderBy 'surname' | limitBy limits.allDay.start limits.allDay.end" transition="fader" stagger="100")
-        td(width="100%").block-name {{item.firstname}} {{item.surname}}
+#column
+  #block(v-if="staffAway.allDay.length > 0" transition="fader")
+    header.red-block #[strong {{staffAway.allDay.length}}] Staff Away All Day
+    #progress-container.red-progress-container
+      #progress-bar.red-progress-bar(v-bind:style="{ maxWidth: progressBarWidth(staffAway.allDay.length, limits.allDay.end, limits.allDay.start) + '%' }")
+    #block-content
+      table
+        tbody
+          tr(v-for="item in staffAway.allDay | orderBy 'surname' | limitBy limits.allDay.start limits.allDay.end" transition="fader" stagger="100")
+            td(width="50%" class="staff-away-name") {{item.firstname}} {{item.surname}}

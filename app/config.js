@@ -20,10 +20,18 @@ module.exports = new Config({
     },
     cycles: {
       everySecond: 1000,
-      everyMinute: 60000
+      everyMinute: 1000 * 60,
+      everyHour: 60000 * 60
     },
     lastUpdated: {
       format: 'Do MMMM [at] h:mm A'
+    },
+    pagination: {
+      threshold: {
+        now: 3,
+        soon: 3,
+        allDay: 6
+      }
     }
   }
 });

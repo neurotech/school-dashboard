@@ -1,61 +1,71 @@
 'use strict';
 
 const Vue = require('vue');
-const got = require('got');
+const path = require('path');
 const moment = require('moment');
 const config = require('./config');
 const check = require('./check');
-const carousel = require('./js/carousel');
-const pageChange = require('./transitions/page-change');
+const carousel = require('./lib/carousel');
 
-var now = moment();
-var routes = ['staff-absent'];
-var duration = 3000;
+var routes = [
+  {
+    view: 'splash',
+    duration: 3000
+  },
+  {
+    view: 'staff-absent',
+    duration: 7500
+  }
+];
 
+Vue.config.devtools = false;
 Vue.component('splash', require('./components/splash'));
 Vue.component('staff-absent', require('./components/staff-absent'));
-Vue.component('summary', require('./components/summary'));
-Vue.component('icon-settings', require('./components/icon-settings'));
 
 var app = new Vue({
   el: '#app',
   data: {
     currentView: 'splash',
     missingConfig: check(),
-    freshness: now,
-    timetable: {
+    freshness: '',
+    timetable: [{
       week: '',
       period: ''
-    },
+    }],
     now: {
       date: moment().format(config.get('now.date')),
       time: moment().format(config.get('now.time'))
     }
   },
+  mixins: [require(path.join(__dirname, './mixins/fetch-timetable'))],
   created: function () {
     this.fetchTimetable();
   },
   ready: function () {
     setInterval(this.fetchTime, config.get('cycles.everySecond'));
     setInterval(this.fetchTimetable, config.get('cycles.everyMinute'));
-  },
-  activate: function (done) {
-    pageChange(done);
+    setInterval(this.fetchDate, config.get('cycles.everyHour'));
   },
   methods: {
     fetchTime: function () {
-      var now = moment().format(config.get('now.time'));
-      this.now.time = now;
+      var currentTime = moment().format(config.get('now.time'));
+      this.now.time = currentTime;
     },
-    fetchTimetable: function () {
-      got(config.get('api') + 'periods/current', config.get('got'))
-        .then(response => { this.timetable = response.body[0]; })
-        .catch(error => { console.log(error); });
+    fetchDate: function () {
+      var currentDate = moment().format(config.get('now.date'));
+      this.now.date = currentDate;
     },
     lastUpdated: function (raw) {
       var nice = moment(raw).format(config.get('lastUpdated.format'));
       return nice;
+    },
+    flashSeparator: function (time) {
+      var separated = time.replace(':', '<span class="flash-separator">&#58;</span>');
+      return separated;
     }
+  },
+  transitions: {
+    'fader': require('./transitions/fader')
   },
   events: {
     'freshness-update': function (dateTime) {
@@ -64,4 +74,6 @@ var app = new Vue({
   }
 });
 
-if (check() === 'OK') { carousel.start(routes, duration); }
+window.app = app;
+
+if (check() === 'OK') { carousel.start(routes, 5000); }

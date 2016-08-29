@@ -11,10 +11,17 @@ function onClosed () { mainWindow = null; }
 
 function createMainWindow () {
   const win = new electron.BrowserWindow({
+    show: false,
     backgroundColor: '#312e46',
     width: 1920 / factor,
     height: 1080 / factor,
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    minWidth: 960,
+    minHeight: 640
+  });
+
+  win.once('ready-to-show', () => {
+    win.show();
   });
 
   win.loadURL(`file://${__dirname}/app/index.html`);

@@ -4,47 +4,27 @@
 		<meta charset="utf-8">
 		<title>Picnic</title>
 		<link rel="stylesheet" href="vendor/normalize.css">
-		<link rel="stylesheet" href="vendor/lemonade.css">
 		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
-		<div id="app" class="frame">
-			<header class="bit-1" v-cloak>
-				<div id="time" class="bit-2" transition="fader">{{now.time}}</div>
-				<div id="now" class="bit-2">
-					<div id="timetable">Week {{timetable.week}} - {{timetable.period}}</div>
-					<div id="date">{{now.date}}</div>
-				</div>
-		  </header>
-
-			<div id="picnic-content">
-				<div v-if="currentView = 'splash'">
-					<div v-if="missingConfig != 'OK'" class="modal-mask">
-						<div class="modal-wrapper">
-							<div class="error-modal">
-								<div class="error-logo">
-									<icon-settings></icon-settings>
-								</div>
-								<div class="error-header">
-									<h2>Configuration Error</h2>
-								</div>
-						    <div v-for="(index, item) in missingConfig" class="error-item">
-						      <h3>Missing {{item.heading}}</h3>
-						      <p>{{item.detail}}</p>
-									<h4>Example:</h4>
-						      <pre>{{item.example}}</pre>
-									<hr v-if="missingConfig.length > 1 && $index === 0">
-								</div>
-							</div>
-						</div>
+		<div id="app">
+			<div id="container">
+				<div id="header" v-if="currentView != 'splash'" transition="fader">
+					<div id="clock">{{{flashSeparator(now.time)}}}</div>
+					<div id="calendar" v-if="timetable[0].week.length > 0" transition="fader">
+						<div id="timetable">Week {{timetable[0].week}} <span class="pale-dot">&#8226;</span> {{timetable[0].period}}</div>
+						<div id="date">{{now.date}}</div>
 					</div>
+			  </div>
+
+				<div id="switcher">
+					<component :is="currentView"></component>
 				</div>
 
-				<component :is="currentView"></component>
-
+				<div id="footer" v-if="currentView != 'splash'" transition="fader">
+          <div id="freshness" v-if="freshness.length > 0" transition="fader">Data last updated on {{lastUpdated(freshness)}}</div>
+				</div>
 			</div>
-
-			<footer v-show="currentView != 'splash'">Data last updated: {{lastUpdated(freshness)}}</footer>
 		</div>
 	  <script src="index.js"></script>
 	</body>
