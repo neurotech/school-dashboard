@@ -1,5 +1,4 @@
 'use strict';
-
 const path = require('path');
 const pug = require('pug');
 const pageChange = require('../../lib/page-change');
@@ -10,7 +9,7 @@ module.exports = {
     return {
       title: 'Picnic',
       description: 'Passive Information Communicator for New and Interesting Content',
-      version: process.env.npm_package_version
+      version: '1.0.0'
     };
   },
   mixins: [require(path.join(__dirname, '../../mixins/wrap-each-character'))],
