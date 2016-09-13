@@ -9,10 +9,6 @@ const carousel = require('./lib/carousel');
 
 var routes = [
   {
-    view: 'splash',
-    duration: 3000
-  },
-  {
     view: 'staff-absent',
     duration: 7500
   }
@@ -76,4 +72,4 @@ var app = new Vue({
 
 window.app = app;
 
-if (check() === 'OK') { carousel.start(routes, 5000); }
+if (check() === 'OK') { carousel.start(routes, 1000); }
