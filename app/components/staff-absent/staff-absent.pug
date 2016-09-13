@@ -7,8 +7,8 @@
       table
         tbody
           tr(v-for="item in staffAway.now | orderBy 'surname' | limitBy limits.now.start limits.now.end" transition="fader" stagger="100")
-            td(width="50%" class="staff-away-name") {{item.firstname}} {{item.surname}}
-            td(width="50%" class="staff-away-time") {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} #[span(class="time-separator") to] {{niceTime(item.dateTo + ' ' + item.timeTo)}}
+            td(width="60%" class="staff-away-name") {{item.firstname}} {{item.surname}}
+            td(width="40%" class="staff-away-time") {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} #[span(class="time-separator") to] {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
   #block(v-if="staffAway.soon.length > 0" transition="fader")
     header.blue-block #[strong {{staffAway.soon.length}}] Staff Away Soon
@@ -18,8 +18,8 @@
       table
         tbody
           tr(v-for="item in staffAway.soon | orderBy 'surname' | limitBy limits.soon.start limits.soon.end" transition="fader" stagger="100")
-            td(width="50%" class="staff-away-name") {{item.firstname}} {{item.surname}}
-            td(width="50%" class="staff-away-time") {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} #[span(class="time-separator") to] {{niceTime(item.dateTo + ' ' + item.timeTo)}}
+            td(width="60%" class="staff-away-name") {{item.firstname}} {{item.surname}}
+            td(width="40%" class="staff-away-time") {{niceTime(item.dateFrom + ' ' + item.timeFrom)}} #[span(class="time-separator") to] {{niceTime(item.dateTo + ' ' + item.timeTo)}}
 
 #column
   #block(v-if="staffAway.allDay.length > 0" transition="fader")
@@ -30,4 +30,4 @@
       table
         tbody
           tr(v-for="item in staffAway.allDay | orderBy 'surname' | limitBy limits.allDay.start limits.allDay.end" transition="fader" stagger="100")
-            td(width="50%" class="staff-away-name") {{item.firstname}} {{item.surname}}
+            td(class="staff-away-name") {{item.firstname}} {{item.surname}}
