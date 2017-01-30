@@ -15,7 +15,7 @@
     "test": "xo",
     "watch": "node-sass --watch src/scss/all.scss app/css/index.css",
     "build:css": "node-sass src/scss/all.scss app/css/index.css",
-    "vendor": "cp node_modules/normalize.css/normalize.css app/css/normalize.css && cp node_modules/lemonade-grid/css/lemonade.css app/vendor/lemonade.css",
+    "vendor": "cp node_modules/normalize.css/normalize.css app/css/normalize.css",
     "prestart": "npm run build:css && npm run vendor",
     "start": "electron .",
     "prebuild": "npm run build:css && npm run vendor",
@@ -30,7 +30,6 @@
   "dependencies": {
     "electron-config": "0.2.1",
     "electron-debug": "1.0.1",
-    "electron-packager": "7.3.0",
     "got": "6.3.0",
     "moment": "2.13.0",
     "normalize.css": "4.1.1",
@@ -40,7 +39,6 @@
   },
   "devDependencies": {
     "devtron": "^1.1.0",
-    "electron-packager": "7.6.0",
     "electron-prebuilt": "1.3.3",
     "semistandard": "8.0.0"
   }
