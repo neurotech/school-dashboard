@@ -31,7 +31,7 @@
     "electron-config": "0.2.1",
     "electron-debug": "1.0.1",
     "got": "6.3.0",
-    "moment": "2.13.0",
+    "moment": "2.19.3",
     "normalize.css": "4.1.1",
     "pug": "2.0.0-beta2",
     "velocity-animate": "1.2.3",
