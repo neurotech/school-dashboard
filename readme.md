@@ -1,5 +1,3 @@
-# picnic
+#  `school-dashboard`
 
-# TODO
-
- - Better README
+Formerly `picnic`
